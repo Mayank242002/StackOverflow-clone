@@ -22,7 +22,7 @@ const QuestionsDetails = () => {
   const navigate=useNavigate();
   const dispatch=useDispatch();
   const location=useLocation();
-  const url="http://localhost:3000"
+  const url="http://stack-overflow-mayank.netlify.com"
 
   const questionsList=useSelector((state)=>state.questionsReducer)
   var user=useSelector((state)=>state.currentUserReducer);

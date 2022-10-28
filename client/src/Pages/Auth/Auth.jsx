@@ -16,9 +16,10 @@ const Auth=()=>{
    
    const navigate=useNavigate();
    const dispatch=useDispatch();
+   const flagforotp=false;
 
    const handleSwitch=()=>{
-        setIsSignUp(!setIsSignUp);
+        setIsSignUp(!IsSignUp);
    }
 
    const handleSubmit=(e)=>{
@@ -32,8 +33,12 @@ const Auth=()=>{
       dispatch(signup({name,email,password},navigate));
     }
     else
-      dispatch(login({email,password},navigate));
+      dispatch(login({email,password,flagforotp},navigate));
 
+   }
+
+   const handleOtplogin=()=>{
+      navigate("/LoginWithOtp");
    }
    
    return (
@@ -82,6 +87,7 @@ const Auth=()=>{
          </form>
          <p>{IsSignUp?"Already have an account":"Don't have an account"}</p>
          <button className="handle-switch-btn" onClick={handleSwitch}>{IsSignUp?'Log in':'Sign up'}</button>
+         <button className="handle-switch-btn" onClick={handleOtplogin}>Login With Phone Number</button>
        </div>
       </section>
    );

@@ -4,9 +4,10 @@ import QuestionList from "./QuestionList";
 import {Link,useLocation,useNavigate} from "react-router-dom";
 import { useSelector } from "react-redux";
 
+
 const HomeMainBar=()=>{
 
-    const user=12;
+    var user=null;
     const navigate=useNavigate();
     
     const checkAuth=()=>{
@@ -19,7 +20,7 @@ const HomeMainBar=()=>{
             navigate("/AskQuestion");
         }
     }
-
+    user=useSelector((state)=>state.currentUserReducer);
     const questionsList=useSelector((state)=>state.questionsReducer)
     
     
@@ -43,6 +44,7 @@ const HomeMainBar=()=>{
                     </>
                 }
             </div>
+            
             
 
         </div>

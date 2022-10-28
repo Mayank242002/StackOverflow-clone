@@ -20,6 +20,9 @@ const UserProfile = () => {
     const users = useSelector((state) => state.usersReducer)
     const currentProfile = users.filter((user) => user._id === id)[0]
     var currentUser = useSelector((state) => state.currentUserReducer)
+    const CurrentUserLocation=useSelector((state)=>state.locationReducer)
+    console.log(CurrentUserLocation)
+
     if (typeof(currentUser)=="string")
       currentUser=JSON.parse(currentUser)
          
@@ -42,12 +45,22 @@ const UserProfile = () => {
                 </div>
                 {
                     currentUser?.result._id === id && (
+                       
                         <button type='button' onClick={() => setSwitch(true)} className='edit-profile-btn'>
                             <FontAwesomeIcon icon={faPen} /> Edit Profile
                         </button>
+
                     ) 
                 }
             </div>
+            {
+                    currentUser?.result._id === id && (
+                       <div>
+                        <h4>User Current Location</h4>
+                        <p>{CurrentUserLocation}</p>
+                       </div>
+                    ) 
+                }
             <>
                 {
                     Switch ? (

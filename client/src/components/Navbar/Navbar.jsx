@@ -8,10 +8,16 @@ import "./Navbar.css"
 import { setCurrentUser } from "../../actions/currentUser";
 import decode from "jwt-decode"
 
+
 const Navbar=()=>{
   
   const dispatch=useDispatch();
   const navigate=useNavigate();
+  var currentUser = useSelector((state) => state.currentUserReducer)
+
+  if (typeof(currentUser)=="string")
+      currentUser=JSON.parse(currentUser)
+
   var user=useSelector((state)=>(state.currentUserReducer));
   if (typeof(user)==="string")
       user=JSON.parse(user);
@@ -53,7 +59,7 @@ const Navbar=()=>{
              {user === null?
              <Link to="/Auth" className="nav-item nav-links">Log in</Link>:
              <>             
-               <Aavtar backgroundColor='#009dff' px="10px" py="7px" borderRadius="50%" color='white'><Link to="/user" style={{color:"white", textDecoration:'none'}}>{user.result.name.charAt(0)}</Link></Aavtar>
+               <Aavtar backgroundColor='#009dff' px="10px" py="7px" borderRadius="50%" color='white'><Link to={`/Users/${currentUser.result._id}`} style={{color:"white", textDecoration:'none'}}>{user.result.name.charAt(0)}</Link></Aavtar>
              <button className="nav-item nav-links" onClick={handleLogout}>Log out</button>
              </>
              }        

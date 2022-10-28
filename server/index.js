@@ -5,6 +5,7 @@ import userRoutes from "./routes/users.js";
 import questionRoutes from "./routes/Questions.js";
 import answerRoutes from "./routes/answer.js";
 import dotenv from 'dotenv';
+
  
 dotenv.config();
 
@@ -16,6 +17,9 @@ app.use(cors());
 app.get("/",(req,res)=>{
     res.send("Stack-overflow clone working");
 })
+
+
+
 
 
 

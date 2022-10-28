@@ -14,7 +14,7 @@ const DisplayAnswer = ({question}) => {
     const dispatch=useDispatch();
 
     const handleShare=()=>{
-        copy("http://localhost:3000"+location.pathname);
+        copy("http://stack-overflow-mayank.netlify.com"+location.pathname);
         alert("Copied");
     }
 
