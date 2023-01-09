@@ -4,7 +4,7 @@ import PhoneInput from 'react-phone-number-input'
 import { useState } from 'react'
 import { setUpRecaptcha } from '../../Firebase/Firebase'
 import "./LoginWithOtp.css";
-import { useNavigate } from 'react-router-dom'
+import { useAsyncError, useNavigate } from 'react-router-dom'
 import { useDispatch } from "react-redux";
 import {login} from "../../actions/auth.js";
 
@@ -13,20 +13,20 @@ const LoginWithOtp = () => {
     const [otp,setOtp]=useState("");
     const [flag,setFlag]=useState(false);
     const [confirmObj,setconfirmObj]=useState("");
+    const [id,setId]=useState("");
    
     const navigate=useNavigate();
     const dispatch=useDispatch();
     const flagforotp=true;
-    var id=""
 
     const getOtp=async (e)=>{
       e.preventDefault();
       if (number==="" || number===undefined) return;
       try{
         const response = await setUpRecaptcha(number);
-        id=response.verificationId;
         setconfirmObj(response);
         setFlag(true);
+        setId(number);
       }catch(error)
       {
         console.log(error);

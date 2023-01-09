@@ -6,11 +6,11 @@ const ProfileBio = ({currentProfile}) => {
         <div>
             <div>
                 {
-                    currentProfile?.tags.length !== 0 ? (
+                    currentProfile?.tags?.length !== 0 ? (
                         <>
                             <h4>Tags watched</h4>
                             {
-                                currentProfile?.tags.map((tag) => (
+                                currentProfile?.tags?.map((tag) => (
                                     <p key={tag}>{tag}</p>
                                 ))
                             }

@@ -18,8 +18,10 @@ const UserProfile = () => {
 
     const { id } = useParams()
     const users = useSelector((state) => state.usersReducer)
-    const currentProfile = users.filter((user) => user._id === id)[0]
+    var currentProfile = users.filter((user) => user._id === id)[0]
     var currentUser = useSelector((state) => state.currentUserReducer)
+    if (id[0]==='+')
+        currentProfile=currentUser.result;
     const CurrentUserLocation=useSelector((state)=>state.locationReducer)
     console.log(CurrentUserLocation)
 
@@ -44,7 +46,7 @@ const UserProfile = () => {
                     </div>
                 </div>
                 {
-                    currentUser?.result._id === id && (
+                    currentUser?.result._id === id && id[0]!=='+' && (
                        
                         <button type='button' onClick={() => setSwitch(true)} className='edit-profile-btn'>
                             <FontAwesomeIcon icon={faPen} /> Edit Profile

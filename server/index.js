@@ -19,10 +19,6 @@ app.get("/",(req,res)=>{
 })
 
 
-
-
-
-
 app.use("/user",userRoutes);
 app.use("/questions",questionRoutes);
 app.use("/answer",answerRoutes);
